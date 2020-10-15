@@ -73,7 +73,7 @@ class App extends React.Component {
         pile1: deck1,
         pile2: deck2,
         pile3: deck3,
-        count: state.count++,
+        count: state.count++
       };
     });
     console.log(this.state.cards);
