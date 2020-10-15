@@ -59,7 +59,7 @@ class App extends React.Component {
     let deck1 = [];
     let deck2 = [];
     let deck3 = [];
-    const { pile1, pile2, pile3, value } = this.state;
+    const { pile1, pile2, pile3 } = this.state;
     if (pile === "1") {
       cardPile.push(...pile3, ...pile1, ...pile2);
     } else if (pile === "2") {
@@ -70,14 +70,14 @@ class App extends React.Component {
     this.setState((state) => {
       return {
         cards: (state.cards = cardPile),
+        count: state.count + 1,
         pile1: deck1,
         pile2: deck2,
         pile3: deck3,
-        count: state.count++
       };
     });
-    console.log(this.state.cards);
     this.shuffle(cardPile);
+    console.log('count', this.state.count)
   }
 
   gameStarted() {
@@ -94,7 +94,6 @@ class App extends React.Component {
   }
 
   handleSubmit(pile) {
-    console.log("value ", pile);
     this.reDeal(pile);
   }
 
@@ -105,7 +104,6 @@ class App extends React.Component {
     let piles3 = [];
     let shuffledCards;
     const { cards } = this.state;
-    console.log("this is cardPile", cardPile);
 
     cardPile ? (shuffledCards = cardPile) : (shuffledCards = cards);
 
